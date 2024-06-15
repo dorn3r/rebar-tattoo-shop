@@ -75,7 +75,7 @@ import { useTranslate } from '@Shared/translate';
 import '../translate/index';
 import { Tattoshop_Events } from '../shared/events';
 import { Tattoos } from '../shared/tattoos';
-const { t } = useTranslate('hu');
+const { t } = useTranslate('en');
 
 const events = useEvents();
 const selectedZone = ref('Torso');
