@@ -52,7 +52,7 @@ async function playerspawn(player: alt.Player) {
         interaction.on(handleInteraction);
         
         function handleInteraction(player: alt.Player) {
-            alt.emitClient(player, Tattoshop_Events.TATTOOSHOP_OPEN);
+            alt.emitClient(player, Tattoshop_Events.ToClient.TATTOOSHOP_OPEN);
         }
         
     }
@@ -60,13 +60,13 @@ async function playerspawn(player: alt.Player) {
 
 
 
-alt.onClient(Tattoshop_Events.TATTOO_PREVIEW, (player: alt.Player, collection, overlay) => {
+alt.onClient(Tattoshop_Events.ToServer.TATTOO_PREVIEW, (player: alt.Player, collection, overlay) => {
     player.clearDecorations();
     Rebar.player.usePlayerAppearance(player).updateTattoos();
     player.addDecoration(collection, overlay);
 })
 
-alt.onClient(Tattoshop_Events.TATTOO_BUY, async (player: alt.Player, collection, overlay, price) => {
+alt.onClient(Tattoshop_Events.ToServer.TATTOO_BUY, async (player: alt.Player, collection, overlay, price) => {
     const characterCurrency = useCurrency(player, 'Character');
     let cash = await characterCurrency.get('cash');
     
