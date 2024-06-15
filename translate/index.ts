@@ -12,6 +12,7 @@ setBulk({
         'tatto.shop.zone.left.leg': 'Left Leg',
         'tatto.shop.zone.right.leg': 'Right Leg',
         'tatto.shop.zone.change': 'Change Zone :',
+        'tatto.shop.collection': 'Collection',
         'tatto.shop.index': 'Index:',
         'tatto.shop.price': 'Price:',
         'tatto.shop.blip.name': 'Tattoo Shop',

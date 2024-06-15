@@ -1,4 +1,4 @@
-export default [
+export const Tattoos = [
     {
         Collection: "mpairraces_overlays",
         Name: "TAT_AR_000",
