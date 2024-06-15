@@ -9,7 +9,7 @@ import { Decorator } from '@Server/player/appearance.js';
 import { useTranslate } from '@Shared/translate.js';
 import '../translate/index.js';
 import { NotificationTypes } from '../../asc-notifications/shared/config.js';
-const { t } = useTranslate('hu');
+const { t } = useTranslate('en');
 
 
 const Rebar = useRebar();
