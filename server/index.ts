@@ -9,7 +9,7 @@ import { Decorator } from '@Server/player/appearance.js';
 import { useTranslate } from '@Shared/translate.js';
 import '../translate/index.js';
 import { NotificationTypes } from '../../asc-notifications/shared/config.js';
-const { t } = useTranslate('en');
+const { t } = useTranslate('hu');
 
 
 const Rebar = useRebar();
@@ -31,7 +31,7 @@ async function playerspawn(player: alt.Player) {
             color: BlipColor.BLUE,
             sprite: 75,
             shortRange: true,
-            text: t('tatto.shop.blip.name'),
+            text: t('tattoo.shop.blip.name'),
         });
 
         // Create a global marker
@@ -72,9 +72,9 @@ alt.onClient(Tattoshop_Events.ToServer.TATTOO_BUY, async (player: alt.Player, co
     
     if(cash < price) {
         NotificationAPI.create(player, {
-            title: t('tatto.shop.notif.title'),
-            subTitle: t('tatto.shop.notif.subtitle.warning'),
-            message: t('tatto.shop.not.enough.money'),
+            title: t('tattoo.shop.notif.title'),
+            subTitle: t('tattoo.shop.notif.subtitle.warning'),
+            message: t('tattoo.shop.not.enough.money'),
             icon: NotificationTypes.warning,
             duration: 5000,
         });
@@ -83,9 +83,9 @@ alt.onClient(Tattoshop_Events.ToServer.TATTOO_BUY, async (player: alt.Player, co
         return
     } else {
         NotificationAPI.create(player, {
-            title: t('tatto.shop.notif.title'),
-            subTitle: t('tatto.shop.notif.subtitle.succes'),
-            message: t('tatto.shop.notif.bought'),
+            title: t('tattoo.shop.notif.title'),
+            subTitle: t('tattoo.shop.notif.subtitle.succes'),
+            message: t('tattoo.shop.notif.bought'),
             icon: NotificationTypes.success,
             duration: 5000,
         });
@@ -117,6 +117,20 @@ alt.onClient(Tattoshop_Events.ToServer.TATTOO_BUY, async (player: alt.Player, co
 
     Rebar.player.usePlayerAppearance(player).setTattoos(decors);
 }) 
+
+alt.onClient(Tattoshop_Events.ToServer.TATTOO_DELETE, (player: alt.Player) => {
+    const document = Rebar.document.character.useCharacter(player);
+    const data = document.get();
+
+    if (!data || !data.appearance) {
+        return;
+    }
+
+    let decors: Array<Decorator> = [];
+
+    player.clearDecorations();
+    Rebar.player.usePlayerAppearance(player).setTattoos(decors);
+})
 
 
 RebarEvents.on('character-bound', (player, document) => {

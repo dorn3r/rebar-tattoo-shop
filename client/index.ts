@@ -3,12 +3,15 @@ import * as native from 'natives';
 import { Tattoshop_Events } from '../shared/events.js';
 import { useWebview } from '@Client/webview/index.js';
 import { useClientApi } from '@Client/api/index.js';
+import { TATTOOSHOP_SETTINGS } from '../shared/config.js';
 
 const CameraAPI = useClientApi().get('ascended-camera-api');
 const webview = useWebview();
 
 alt.onServer(Tattoshop_Events.ToClient.TATTOOSHOP_OPEN, async () => {
-    webview.show('Tattoo', 'page');
+    webview.show('tattoo', 'page');
+    webview.emit(Tattoshop_Events.WebView.ENABLE_MORE_MENU, TATTOOSHOP_SETTINGS.enablemoremenu)
+
 
     //Camera API
     CameraAPI.ease(true, 2000);
@@ -28,7 +31,7 @@ alt.onServer(Tattoshop_Events.ToClient.TATTOOSHOP_OPEN, async () => {
 });
 
 async function closeShop() {
-    webview.hide('Tattoo');
+    webview.hide('tattoo');
 
     CameraAPI.onMovementControl(true);
     webview.off('CAMERA_MOVE_START');
