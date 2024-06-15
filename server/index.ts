@@ -89,6 +89,7 @@ alt.onClient(Tattoshop_Events.ToServer.TATTOO_BUY, async (player: alt.Player, co
             icon: NotificationTypes.success,
             duration: 5000,
         });
+        await useCurrency(player, 'Character').sub('cash', price)
     }
 
     const document = Rebar.document.character.useCharacter(player);
